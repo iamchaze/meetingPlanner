@@ -1,0 +1,27 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.navBar{
+  width: 100%;
+  background-color: royalblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1%;
+}
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: inherit;
+  width: 70%;
+  padding: 1%;
+
+}
+nav button{
+  border: none;
+  background-color: inherit;
+  color: white;
+  font-weight: bold;
+}

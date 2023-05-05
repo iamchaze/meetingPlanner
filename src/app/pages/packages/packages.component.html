@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-7">
+    <div class="card">
+      <div class="card-header bg-success"><p class="pkg-portal" >Packages Portal</p> <p class="total-pkg" >Total Packages: {{packagesArray.length}}</p> </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sr No.</th>
+              <th>Cost</th>
+              <th>Name</th>
+              <th>Descption</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let package of packagesArray; let sr = index" >
+                <td> {{sr + 1}} </td>
+                <td> {{package.packageName}} </td>
+                <td> {{package.packageCost}} </td>
+                <td> {{package.packageDescription}} </td>
+                <td> {{package.isPackageActive}} </td>
+                <td class="text-center">
+                  <button class="btn btn-info btn-sm" (click)="editPackage(package.id)">Edit</button>
+                  <button class="btn btn-danger btn-sm mx-2" (click)="deletePackage(package.id)">Delete</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #create>
+    <div class="col-5">
+      <div class="card">
+        <div class="card-header bg-success">
+          Create Package
+        </div>
+       <div class="card-body">
+        <form action="">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Package Name</label>
+              <input type="text" class="form-control" name="packageName"  [(ngModel)]="packageObj.packageName" required>
+            </div>
+            <div class="col-6">
+              <label for="">Package Cost</label>
+              <input type="text" class="form-control" name="packageCost" [(ngModel)]="packageObj.packageCost" required>
+            </div>
+            <div class="col-6">
+              <label for="">Description</label>
+              <textarea class="form-control" cols="100" rows="3" name="packageDescription" [(ngModel)]="packageObj.packageDescription" required ></textarea>
+            </div>
+            <div class="col-6">
+              <label for="">Is Active?</label>
+              <input type="checkbox" [(ngModel)]="packageObj.isPackageActive" name="isPackageActive">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <button class="btn btn-secondary">Reset</button>
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary" (click)="addNewPackage()" >Save</button>
+            </div>
+          </div>
+        </form>
+       </div>
+    </div>
+  </div>
+  </ng-template>
+  <ng-template #update>
+    <div class="col-5">
+      <div class="card">
+        <div class="card-header bg-success">
+          Update Package
+        </div>
+       <div class="card-body">
+        <form action="">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Package Name</label>
+              <input type="text" class="form-control" name="packageName"  [(ngModel)]="packageObj.packageName" required>
+            </div>
+            <div class="col-6">
+              <label for="">Package Cost</label>
+              <input type="text" class="form-control" name="packageCost" [(ngModel)]="packageObj.packageCost" required>
+            </div>
+            <div class="col-6">
+              <label for="">Description</label>
+              <textarea class="form-control" cols="100" rows="3" name="packageDescription" [(ngModel)]="packageObj.packageDescription" required ></textarea>
+            </div>
+            <div class="col-6">
+              <label for="">Is Active?</label>
+              <input type="checkbox" [(ngModel)]="packageObj.isPackageActive" name="isPackageActive">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <button class="btn btn-secondary">Reset</button>
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary" (click)="updatePackage()" >Update</button>
+            </div>
+          </div>
+        </form>
+       </div>
+    </div>
+  </div>
+  </ng-template>
+  <p *ngIf="createPackageFlag; then create else update" ></p>
+</div>
